@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="s1.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <h1>Cloud</h1>
+        <div class="sidebar-section">General</div>
+        <nav>
+            <a href="#dashboard" class="nav-item active" data-view="dashboard" aria-current="page">
+                <span>㗊</span> Dashboard
+            </a>
+            <a href="#instances" class="nav-item" data-view="instances">
+                <span>🖥️</span> Instancias
+            </a>
+            <a href="#" class="nav-item">
+                <span>🌐</span> Red y Tráfico
+            </a>
+            <a href="#" class="nav-item">
+                <span>📊</span> Métricas
+            </a>
+            <a href="#" class="nav-item">
+                <span>🛡️</span> Seguridad
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Botón Toggle (Ahora vinculado y pegado al borde del sidebar) -->
+    <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <span id="toggleIcon">&lt;</span>
+    </button>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-left">
+                <!-- Buscador tipo Píldora -->
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Buscar servidor...">
+                </div>
+            </div>
+
+            <!-- Controles Derecha -->
+            <div class="header-controls">
+                <div class="control-btn">(!)</div>
+                <div class="control-btn">👤</div>
+                
+                <!-- Switch de Tema Corregido -->
+                <button class="theme-switch" id="theme-toggle" type="button" aria-label="Cambiar tema" aria-pressed="true">
+                    <div class="theme-icon-wrapper icon-sun">☼</div>
+                    <div class="theme-icon-wrapper icon-moon">🌙</div>
+                </button>
+            </div>
+        </header>
+
+        <section class="page-view" id="dashboardView" aria-labelledby="dashboardTitle">
+            <div class="welcome">
+                <h2 id="dashboardTitle">Bienvenido!!</h2>
+                <p>El sistema opera con normalidad. 124 instancias activas.</p>
+            </div>
+
+            <section class="grid-container" aria-label="Resumen de servidores">
+                <div class="card card-1">
+                    <h3>Servidores Activos</h3>
+                    <div class="stats-row">
+                        <div>
+                            <div class="stat-num">124</div>
+                            <div class="stat-label stat-active">Activos</div>
+                        </div>
+                        <div>
+                            <div class="stat-num">3</div>
+                            <div class="stat-label stat-pause">Pausa</div>
+                        </div>
+                        <div>
+                            <div class="stat-num">0</div>
+                            <div class="stat-label stat-down">Caídos</div>
+                        </div>
+                    </div>
+                    <div class="bars" aria-hidden="true">
+                        <div class="bar" style="height: 12px;"></div>
+                        <div class="bar" style="height: 18px;"></div>
+                        <div class="bar" style="height: 8px;"></div>
+                        <div class="bar" style="height: 30px;"></div>
+                        <div class="bar" style="height: 24px;"></div>
+                    </div>
+                </div>
+
+                <div class="card card-2">
+                    <h3>Uso del CPU Global</h3>
+                </div>
+
+                <div class="card card-3">
+                    <h3>Latencia Promedio</h3>
+                    <div class="latency-val">24 ms (Estable)</div>
+                </div>
+
+                <div class="card card-4">
+                    <h3>Latencia Promedio</h3>
+                    <div class="latency-val">24 ms (Estable)</div>
+                </div>
+            </section>
+
+            <section class="list-container">
+                <div class="list-header">
+                    <h3>Lista de instancias</h3>
+                    <select class="filter-select" aria-label="Periodo">
+                        <option>HOY</option>
+                    </select>
+                </div>
+
+                <div class="list-item item-row-1" data-server-id="server-1" data-description="Servidor principal" data-date="2026-01-01">
+                    <div class="item-info">
+                        <div class="item-icon" aria-hidden="true">🗄️</div>
+                        <div>
+                            <div class="item-name">Servidor 1</div>
+                            <div class="item-status">Optimo</div>
+                        </div>
+                    </div>
+                    <div class="record-actions">
+                        <span class="badge badge-pink">20%</span>
+                        <button class="text-button" type="button" data-action="edit" data-server-id="server-1">Editar</button>
+                        <button class="text-button danger" type="button" data-action="delete" data-server-id="server-1">Eliminar</button>
+                    </div>
+                </div>
+
+                <div class="list-item item-row-2" data-server-id="server-2" data-description="Servidor secundario" data-date="2026-01-02">
+                    <div class="item-info">
+                        <div class="item-icon" aria-hidden="true">🗄️</div>
+                        <div>
+                            <div class="item-name">Servidor 2</div>
+                            <div class="item-status warning">ADVERTENCIA</div>
+                        </div>
+                    </div>
+                    <div class="record-actions">
+                        <span class="badge badge-red">85%</span>
+                        <button class="text-button" type="button" data-action="edit" data-server-id="server-2">Editar</button>
+                        <button class="text-button danger" type="button" data-action="delete" data-server-id="server-2">Eliminar</button>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section class="page-view instances-view" id="instancesView" aria-labelledby="instancesTitle" hidden>
+            <div class="page-heading">
+                <div>
+                    <p class="eyebrow">GESTIÓN DE INFRAESTRUCTURA</p>
+                    <h2 id="instancesTitle" tabindex="-1">Instancias</h2>
+                    <p class="page-description">Administra tus servidores y revisa su estado.</p>
+                </div>
+                <div class="instance-count"><span id="instanceCount">2</span> <span id="instanceLabel">servidores</span></div>
+            </div>
+
+            <section class="list-container instance-list" id="instancesList" aria-label="Servidores">
+                <div class="list-header">
+                    <h3>Todos los servidores</h3>
+                    <span class="list-caption">Uso de disco</span>
+                </div>
+                <article class="instance-record item-row-1" data-server-id="server-1" data-description="Servidor principal" data-date="2026-01-01">
+                    <div class="item-info">
+                        <div class="item-icon" aria-hidden="true">🗄️</div>
+                        <div>
+                            <div class="item-name">Servidor 1</div>
+                            <div class="item-status">Optimo · Producción</div>
+                        </div>
+                    </div>
+                    <div class="record-actions">
+                        <span class="badge badge-pink">20%</span>
+                        <button class="text-button" type="button" data-action="edit" data-server-id="server-1">Editar</button>
+                        <button class="text-button danger" type="button" data-action="delete" data-server-id="server-1">Eliminar</button>
+                    </div>
+                </article>
+                <article class="instance-record item-row-2" data-server-id="server-2" data-description="Servidor secundario" data-date="2026-01-02">
+                    <div class="item-info">
+                        <div class="item-icon" aria-hidden="true">🗄️</div>
+                        <div>
+                            <div class="item-name">Servidor 2</div>
+                            <div class="item-status warning">ADVERTENCIA · Pruebas</div>
+                        </div>
+                    </div>
+                    <div class="record-actions">
+                        <span class="badge badge-red">85%</span>
+                        <button class="text-button" type="button" data-action="edit" data-server-id="server-2">Editar</button>
+                        <button class="text-button danger" type="button" data-action="delete" data-server-id="server-2">Eliminar</button>
+                    </div>
+                </article>
+            </section>
+        </section>
+    </main>
+
+    <div class="modal-backdrop" id="editDialog" hidden>
+        <div class="edit-layout">
+            <p class="eyebrow edit-eyebrow">EDITAR</p>
+            <section class="modal edit-modal" role="dialog" aria-modal="true" aria-labelledby="editTitle" tabindex="-1">
+                <h2 id="editTitle">Editar Servidor:</h2>
+                <form id="editForm" class="edit-form">
+                    <div class="edit-field">
+                        <label for="serverName">Nombre del servidor:</label>
+                        <input id="serverName" name="name" required>
+                    </div>
+                    <div class="edit-field">
+                        <label for="serverEnvironment">Entorno:</label>
+                        <select id="serverEnvironment" name="environment" required>
+                            <option>Producción</option>
+                            <option>Pruebas</option>
+                            <option>Desarrollo</option>
+                        </select>
+                    </div>
+                    <div class="edit-field">
+                        <label for="serverDescription">Descripcion:</label>
+                        <input id="serverDescription" name="description" required>
+                    </div>
+                    <div class="edit-field">
+                        <label for="serverDate">Fecha:</label>
+                        <input id="serverDate" name="date" type="date" required>
+                    </div>
+                    <div class="edit-field">
+                        <label for="serverCapacity">Capacidad:</label>
+                        <input id="serverCapacity" name="capacity" type="text" required>
+                    </div>
+                    <div class="modal-actions edit-actions">
+                        <button class="button-secondary" type="button" data-close>Cancelar</button>
+                        <button class="button-primary" id="saveChanges" type="submit" disabled>Guardar Cambios</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="deleteDialog" hidden>
+        <section class="modal modal-confirm" role="dialog" aria-modal="true" aria-labelledby="deleteTitle">
+            <button class="modal-close" type="button" data-close aria-label="Cerrar">×</button>
+            <div class="warning-icon" aria-hidden="true">!</div>
+            <p class="eyebrow">CONFIRMACIÓN</p>
+            <h2 id="deleteTitle">¿Eliminar servidor?</h2>
+            <p>¿Estás seguro que quieres eliminar <strong id="deleteServerName">este servidor</strong>? Esta acción no se puede deshacer.</p>
+            <div class="modal-actions">
+                <button class="button-secondary" type="button" data-close>Cancelar</button>
+                <button class="button-danger" id="confirmDelete" type="button">Eliminar</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('sidebarToggle');
+        const toggleIcon = document.getElementById('toggleIcon');
+        const themeToggle = document.getElementById('theme-toggle');
+        const navItems = document.querySelectorAll('.nav-item[data-view]');
+        const views = {
+            dashboard: document.getElementById('dashboardView'),
+            instances: document.getElementById('instancesView')
+        };
+        const editDialog = document.getElementById('editDialog');
+        const deleteDialog = document.getElementById('deleteDialog');
+        const editForm = document.getElementById('editForm');
+        let selectedServerId = null;
+        let focusedElement = null;
+        let isSaving = false;
+        const saveButton = document.getElementById('saveChanges');
+
+        const updateSaveButton = () => {
+            const fields = [...editForm.querySelectorAll('.edit-field input, .edit-field select')];
+            const fieldsAreComplete = fields.every((field) => field.value.trim() !== '');
+            saveButton.disabled = isSaving || !fieldsAreComplete || !editForm.checkValidity();
+        };
+
+        editForm.addEventListener('input', updateSaveButton);
+        editForm.addEventListener('change', updateSaveButton);
+
+        toggleBtn.addEventListener('click', () => {
+            if (window.innerWidth <= 1024) {
+                sidebar.classList.toggle('mobile-open');
+            } else {
+                sidebar.classList.toggle('collapsed');
+            }
+            updateSidebarToggle();
+        });
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.dataset.theme !== 'dark';
+            document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+            themeToggle.setAttribute('aria-pressed', String(isDark));
+        });
+
+        navItems.forEach((item) => {
+            item.addEventListener('click', (event) => {
+                event.preventDefault();
+                const viewName = item.dataset.view;
+                Object.entries(views).forEach(([name, view]) => {
+                    view.hidden = name !== viewName;
+                });
+                navItems.forEach((navItem) => {
+                    const isActive = navItem === item;
+                    navItem.classList.toggle('active', isActive);
+                    if (isActive) navItem.setAttribute('aria-current', 'page');
+                    else navItem.removeAttribute('aria-current');
+                });
+                sidebar.classList.remove('mobile-open');
+                updateSidebarToggle();
+            });
+        });
+
+        const closeDialog = (dialog) => {
+            if (dialog === editDialog && isSaving) return;
+            dialog.hidden = true;
+            if (dialog === editDialog) {
+                document.body.classList.remove('dialog-open');
+            }
+            if (focusedElement && focusedElement.isConnected) focusedElement.focus();
+        };
+
+        const updateSidebarToggle = () => {
+            const expanded = window.innerWidth <= 1024
+                ? sidebar.classList.contains('mobile-open')
+                : !sidebar.classList.contains('collapsed');
+            toggleBtn.setAttribute('aria-expanded', String(expanded));
+            toggleBtn.setAttribute('aria-label', expanded ? 'Cerrar menú' : 'Abrir menú');
+            toggleIcon.textContent = expanded ? '<' : '>';
+        };
+
+        updateSidebarToggle();
+
+        document.querySelectorAll('[data-action="edit"]').forEach((button) => {
+            button.addEventListener('click', () => {
+                selectedServerId = button.dataset.serverId;
+                const record = document.querySelector(`.instance-record[data-server-id="${selectedServerId}"]`) ||
+                    document.querySelector(`#dashboardView [data-server-id="${selectedServerId}"]`);
+                editForm.elements.name.value = record.querySelector('.item-name').textContent.trim();
+                editForm.elements.description.value = record.dataset.description;
+                editForm.elements.capacity.value = record.querySelector('.badge').textContent.trim();
+                editForm.elements.environment.value = record.querySelector('.item-status').textContent.includes('Pruebas') ? 'Pruebas' : 'Producción';
+                editForm.elements.date.value = record.dataset.date;
+                updateSaveButton();
+                focusedElement = button;
+                editDialog.hidden = false;
+                document.body.classList.add('dialog-open');
+                editDialog.querySelector('.edit-modal').focus();
+            });
+        });
+
+        document.querySelectorAll('[data-action="delete"]').forEach((button) => {
+            button.addEventListener('click', () => {
+                selectedServerId = button.dataset.serverId;
+                const record = document.querySelector(`.instance-record[data-server-id="${selectedServerId}"]`) ||
+                    document.querySelector(`#dashboardView [data-server-id="${selectedServerId}"]`);
+                document.getElementById('deleteServerName').textContent = record.querySelector('.item-name').textContent.trim();
+                focusedElement = button;
+                deleteDialog.hidden = false;
+                document.getElementById('confirmDelete').focus();
+            });
+        });
+
+        editForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (isSaving || saveButton.disabled) return;
+
+            isSaving = true;
+            updateSaveButton();
+            saveButton.setAttribute('aria-busy', 'true');
+            editDialog.querySelectorAll('[data-close]').forEach((button) => {
+                button.disabled = true;
+            });
+
+            window.setTimeout(() => {
+                const name = editForm.elements.name.value.trim();
+                document.querySelectorAll(`[data-server-id="${selectedServerId}"] .item-name`).forEach((element) => {
+                    element.textContent = name;
+                });
+                document.querySelectorAll(`[data-server-id="${selectedServerId}"]`).forEach((record) => {
+                    record.dataset.description = editForm.elements.description.value.trim();
+                    record.dataset.date = editForm.elements.date.value;
+                    if (record.classList.contains('instance-record')) {
+                        const status = record.querySelector('.item-status');
+                        const state = status.textContent.split(' · ')[0];
+                        status.textContent = `${state} · ${editForm.elements.environment.value}`;
+                    }
+                });
+                document.querySelectorAll(`[data-server-id="${selectedServerId}"] .badge`).forEach((badge) => {
+                    badge.textContent = editForm.elements.capacity.value.trim();
+                });
+                saveButton.disabled = false;
+                saveButton.removeAttribute('aria-busy');
+                editDialog.querySelectorAll('[data-close]').forEach((button) => {
+                    button.disabled = false;
+                });
+                isSaving = false;
+                updateSaveButton();
+                closeDialog(editDialog);
+            }, 1000);
+        });
+
+        document.getElementById('confirmDelete').addEventListener('click', () => {
+            document.querySelectorAll(`[data-server-id="${selectedServerId}"]`).forEach((element) => element.remove());
+            const remaining = document.querySelectorAll('.instance-record').length;
+            document.getElementById('instanceCount').textContent = remaining;
+            document.getElementById('instanceLabel').textContent = remaining === 1 ? 'servidor' : 'servidores';
+            focusedElement = document.getElementById('instancesTitle');
+            closeDialog(deleteDialog);
+        });
+
+        document.querySelectorAll('[data-close]').forEach((button) => {
+            button.addEventListener('click', () => closeDialog(button.closest('.modal-backdrop')));
+        });
+
+        [editDialog, deleteDialog].forEach((dialog) => {
+            dialog.addEventListener('click', (event) => {
+                if (event.target === dialog) closeDialog(dialog);
+            });
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                if (!editDialog.hidden) closeDialog(editDialog);
+                if (!deleteDialog.hidden) closeDialog(deleteDialog);
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.remove('mobile-open');
+            } else {
+                sidebar.classList.remove('collapsed');
+            }
+            updateSidebarToggle();
+        });
+    </script>
+</body>
+</html>
